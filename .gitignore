@@ -1,0 +1,14 @@
+# Archivos generados por CMake
+cmake-build-*/
+
+# Configuración local de CLion
+.idea/
+
+# Archivos compilados
+*.exe
+*.o
+*.obj
+*.dll
+*.so
+*.a
+*.lib
