@@ -1,27 +1,120 @@
 @startuml
-'https://plantuml.com/class-diagram
-
-abstract class AbstractList
-abstract AbstractCollection
-interface List
-interface Collection
-
-List <|-- AbstractList
-Collection <|-- AbstractCollection
-
-Collection <|- List
-AbstractCollection <|- AbstractList
-AbstractList <|-- ArrayList
-
-class ArrayList {
-Object[] elementData
-size()
+class SistemaImpl{
+-CatalogoPersonajes
 }
 
-enum TimeUnit {
-DAYS
-HOURS
-MINUTES
+Interface Sistema{
++lecturaPersonajes():bool
++menuPrincipal():void
 }
+
+class CatalogoPersonajes{
+-personaje: NodoPersonajes[]
+-cantActual: int
+-cantMaxima: int
+
++CatalogoPersonajes(NodoPersonaje personaje)
+
+}
+
+class NodoPersonaje{
+-id: int
+-nombre: String
+-tier: Tier
+
++NodoPersonajes(int id, String nombre, String tier)
++get´s()
+
+}
+
+class Tier{
+-tier: String
+-probAparicion: float
+-constelacionMax: int
+-colorConsola: String
+-peso: int
+
++Tier(String tier, float probAparicion, String constelacionMax, String colorConsola, int peso)
++get´s()
+}
+
+class HistorialTiradas_Pila{
+-tope: NodoHistorial
+
+}
+
+class NodoHistorial{
+-tirada: Tirada
+-next: NodoHistorial
+
+}
+
+class Tirada {
+-numeroTirada: int
+-nombre: String
+-tier: String
+-duplicado: bool
+
+}
+
+class ColeccionJugador_Arbol{
+-header: NodoArbol
+}
+
+class NodoArbol{
+-id: int
+-nombre: String
+-tier: String
+-consAct: int
+-coonsMax: int
+-indicePoder: int
+-nodoIzq: NodoArbol
+-nodoDer: NodoArbol
+-esEnhebradoIzq: bool
+-esEnhebradoDer: bool
+
+}
+
+class BatallaAura{
+-rivales: Rival[]
+-rondaActual: int
+-victorias: int
+
++iniciarCombate()
+
+}
+
+class Rival {
+-Nombre: String
+-apOtorgados: int
+}
+
+class Estadisticas{
+-tiradasRealizadas: int
+-apRestante: int
+-apBatallaAura: int
+-apCanje:
+-uaObtenidos: int
+-tierMasFrecuente: String
+-dupeTotales: int
+-cantcCritico67: int
+
+}
+
+
+
+CatalogoPersonajes --> NodoPersonaje
+NodoPersonaje --> Tier
+NodoHistorial --> Tirada
+HistorialTiradas_Pila --> NodoHistorial
+ColeccionJugador_Arbol --> NodoArbol
+BatallaAura --> Rival
+
+SistemaImpl --> CatalogoPersonajes
+SistemaImpl --> HistorialTiradas_Pila
+SistemaImpl --> ColeccionJugador_Arbol
+SistemaImpl ..> Sistema
+SistemaImpl --> BatallaAura
+SistemaImpl --> Estadisticas
 
 @enduml
