@@ -1,0 +1,10 @@
+UA;Aurelia
+UA;Ignis
+SA;Ventus
+SA;Nocturna
+RA;Petra
+RA;Glacius
+CA;Sombra
+CA;Rafaga
+QA;Chispa
+QA;Brote
